@@ -1,0 +1,85 @@
+seed_everything: 42
+
+model:
+  class_path: pose_estimation.pl_wrappers.Pose3DLightningModel
+  init_args:
+    model_cfg:
+      num_joints: 16
+      num_views: 2
+      to_mm: 10.0
+      camera_model: unrealego
+      input_dims: 128
+      embed_dims: 128
+      mlp_dims: 1024
+      mlp_dropout: 0.0
+      num_mlp_layers: 2
+      num_former_layers: 3
+      num_pred_mlp_layers: 2
+      image_size:
+        - 256
+        - 256
+      feat_down_stride: 4
+      norm_mlp_pred: False
+      coor_norm_max: null
+      coor_norm_min: null
+      encoder_cfg:
+        resnet_cfg:
+          model_name: resnet18
+          out_stride: 4
+          use_imagenet_pretrain: True
+        neck_cfg:
+          in_channels:
+            - 64
+            - 128
+            - 256
+            - 512
+          out_channels: 128
+      transformer_cfg:
+        cross_attn_cfg:
+          num_heads: 4
+          batch_first: True
+        spatial_attn_cfg:
+          num_heads: 4
+          batch_first: True
+        ffn_cfg:
+          feedforward_dims: 512
+          num_fcs: 2
+          ffn_drop: 0.0
+      train_cfg:
+        w_mpjpe: 0.1
+      encoder_pretrained: ./work_dirs/unrealego_r18_heatmap/lightning_logs/version_0/checkpoints/epoch_11.ckpt
+    dataset_type: unrealego
+    data_root: ./data/unrealego
+    lr: 0.001
+    weight_decay: 0.0005
+    lr_decay_epochs:
+      - 8
+      - 10
+    warmup_iters: 500
+    batch_size: 32
+    workers: 16
+
+
+
+trainer:
+  max_epochs: 12
+  check_val_every_n_epoch: 1
+  devices: 4
+  benchmark: true
+  precision: 32
+#  gradient_clip_val: 5.0
+#  gradient_clip_algorithm: norm
+  callbacks:
+    - class_path: pytorch_lightning.callbacks.TQDMProgressBar
+      init_args:
+        refresh_rate: 50
+    - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+      init_args:
+        every_n_epochs: 1
+        save_top_k: -1
+        filename: "{epoch}"
+  logger:
+    - class_path: pytorch_lightning.loggers.CSVLogger
+      init_args:
+        save_dir: ./work_dirs/unrealego_r18_pose3d
+

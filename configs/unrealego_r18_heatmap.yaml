@@ -1,0 +1,54 @@
+seed_everything: 42
+
+model:
+  class_path: pose_estimation.pl_wrappers.PoseHeatmapLightningModel
+  init_args:
+    model_cfg:
+      num_heatmap: 15
+      encoder_cfg:
+        resnet_cfg:
+          model_name: resnet18
+          out_stride: 4
+          use_imagenet_pretrain: True
+        neck_cfg:
+          in_channels:
+            - 64
+            - 128
+            - 256
+            - 512
+          out_channels: 128
+      train_cfg:
+        w_heatmap: 10.0
+    dataset_type: unrealego
+    data_root: ./data/unrealego
+    lr: 0.001
+    weight_decay: 0.005
+    lr_decay_epochs:
+      - 8
+      - 10
+    warmup_iters: 500
+    batch_size: 64
+    workers: 16
+
+trainer:
+  max_epochs: 12
+  check_val_every_n_epoch: 1
+  devices: 4
+  benchmark: true
+  precision: 32
+#  gradient_clip_val: 5.0
+#  gradient_clip_algorithm: norm
+  callbacks:
+    - class_path: pytorch_lightning.callbacks.TQDMProgressBar
+      init_args:
+        refresh_rate: 50
+    - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+      init_args:
+        every_n_epochs: 1
+        save_top_k: -1
+        filename: "{epoch}"
+  logger:
+    - class_path: pytorch_lightning.loggers.CSVLogger
+      init_args:
+        save_dir: ./work_dirs/unrealego_r18_heatmap
+
