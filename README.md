@@ -21,7 +21,7 @@ pip install numba==0.56.4
 pip install numpy==1.23.5
 pip install mmcv-full==1.6.0
 
-git clone xxx
+git clone https://github.com/ChenhongyiYang/egoposeformer.git
 cd EgoPoseFormer
 pip install -e .
 ```
