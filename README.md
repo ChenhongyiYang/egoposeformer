@@ -5,7 +5,7 @@
 
 This repository contains the official PyTorch implementation of our paper:
 
-[EgoPoseFormer: A Simple Baseline for Egocentric 3D Human Pose Estimation, *Chenhongyi Yang*, *Anastasia Tkach*, *Shreyas Hampali*, *Linguang Zhang*, *Elliot J. Crowley*, *Cem Keskin*. ECCV 2024.](https://arxiv.org/pdf/2403.18080)
+[EgoPoseFormer: A Simple Baseline for Egocentric 3D Human Pose Estimation, *Chenhongyi Yang*, *Anastasia Tkach*, *Shreyas Hampali*, *Linguang Zhang*, *Elliot J. Crowley*, *Cem Keskin*. ECCV 2024.](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/07241.pdf)
 
 
 ## Usage
@@ -67,20 +67,21 @@ python run.py test --config ./configs/unrealego_r18_pose3d.yaml --ckpt_path path
 ```
 
 ## Results
-| Backbone  | MPJPE | PA-MPJPE |                                                                                         Config                                                                                          |
-|:---------:|:-----:|:--------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| ResNet-18 | 34.5  |   33.4   | [Pre-train](https://github.com/ChenhongyiYang/egoposeformer/blob/main/configs/unrealego_r18_heatmap.yaml) /  [Pose](https://github.com/ChenhongyiYang/egoposeformer/blob/main/configs/unrealego_r18_pose3d.yaml) |
+| Backbone  | MPJPE | PA-MPJPE |                                                                                         Config                                                                                          | Weights  |
+|:---------:|:-----:|:--------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------:|
+| ResNet-18 | 34.5  |   33.4   | [Pre-train](https://github.com/ChenhongyiYang/egoposeformer/blob/main/configs/unrealego_r18_heatmap.yaml) /  [Pose](https://github.com/ChenhongyiYang/egoposeformer/blob/main/configs/unrealego_r18_pose3d.yaml) | [Link](https://drive.google.com/drive/folders/1eRWyj1-v5hO4RcKHOpJTwc-XSKsivIsn?usp=drive_link) |
 
 Note: We numbers are measured using newly trained models, so they are slightly different from the numbers reported in the paper.
 
 ## Citation
 
 ```
-@article{yang2024egoposeformer,
-  title={EgoPoseFormer: A Simple Baseline for Egocentric 3D Human Pose Estimation},
+@inproceedings{yang2024egoposeformer,
+  title={EgoPoseFormer: A Simple Baseline for Stereo Egocentric 3D Human Pose Estimation},
   author={Yang, Chenhongyi and Tkach, Anastasia and Hampali, Shreyas and Zhang, Linguang and Crowley, Elliot J and Keskin, Cem},
-  journal={arXiv preprint arXiv:2403.18080},
-  year={2024}
+  journal={European conference on computer vision},
+  year={2024},
+  organization={Springer}
 }
 ```
 

@@ -52,6 +52,7 @@ model:
     data_root: ./data/unrealego
     lr: 0.001
     weight_decay: 0.0005
+    encoder_lr_scale: 1.0
     lr_decay_epochs:
       - 8
       - 10
