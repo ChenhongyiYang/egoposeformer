@@ -71,7 +71,7 @@ python run.py test --config ./configs/unrealego_r18_pose3d.yaml --ckpt_path path
 |:---------:|:-----:|:--------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------:|
 | ResNet-18 | 34.5  |   33.4   | [Pre-train](https://github.com/ChenhongyiYang/egoposeformer/blob/main/configs/unrealego_r18_heatmap.yaml) /  [Pose](https://github.com/ChenhongyiYang/egoposeformer/blob/main/configs/unrealego_r18_pose3d.yaml) | [Link](https://drive.google.com/drive/folders/1eRWyj1-v5hO4RcKHOpJTwc-XSKsivIsn?usp=drive_link) |
 
-Note: We numbers are measured using newly trained models, so they are slightly different from the numbers reported in the paper.
+Note: The numbers are measured using newly trained models, so they are slightly different from the numbers reported in the paper.
 
 ## Citation
 
