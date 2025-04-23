@@ -27,7 +27,7 @@ pip install -e .
 ```
 
 ### Dataset Setup
-We provide support for our main dataset [UnrealEgo](https://github.com/hiroyasuakada/UnrealEgo). Please refer to its [official instruction](https://4dqv.mpi-inf.mpg.de/UnrealEgo/) to download the dataset. Specifically, you only need to download the [UnrealEgoData_impl](https://drive.google.com/drive/folders/12SIG2yxQpRVwgY5ZPo-8AAn5L8n84XMc) split. You also need to download [pelvis_pos.pkl](https://drive.google.com/file/d/11ADVL-DxWYGnLy0V9ogBT1RGkqe4CRCn/view?usp=sharing), which is extracted from the UnrealEgo meta data, for computing 3D to 2D projection.  The file structures should be:
+We provide support for our main dataset [UnrealEgo](https://github.com/hiroyasuakada/UnrealEgo). Please refer to its [official instruction](https://4dqv.mpi-inf.mpg.de/UnrealEgo/) to download the dataset. Specifically, you only need to download the [UnrealEgoData_impl](https://drive.google.com/drive/folders/12SIG2yxQpRVwgY5ZPo-8AAn5L8n84XMc) split. You also need to download [pelvis_pos.pkl](https://huggingface.co/ChenhongyiYang/egoposeformer/resolve/main/pelvis_pos.pkl?download=true), which is extracted from the UnrealEgo meta data, for computing 3D to 2D projection.  The file structures should be:
 ```
 EgoPoseFormer
 |-- configs
@@ -69,7 +69,7 @@ python run.py test --config ./configs/unrealego_r18_pose3d.yaml --ckpt_path path
 ## Results
 | Backbone  | MPJPE | PA-MPJPE |                                                                                         Config                                                                                          | Weights  |
 |:---------:|:-----:|:--------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------:|
-| ResNet-18 | 34.5  |   33.4   | [Pre-train](https://github.com/ChenhongyiYang/egoposeformer/blob/main/configs/unrealego_r18_heatmap.yaml) /  [Pose](https://github.com/ChenhongyiYang/egoposeformer/blob/main/configs/unrealego_r18_pose3d.yaml) | [Link](https://drive.google.com/drive/folders/1eRWyj1-v5hO4RcKHOpJTwc-XSKsivIsn?usp=drive_link) |
+| ResNet-18 | 34.5  |   33.4   | [Pre-train](https://github.com/ChenhongyiYang/egoposeformer/blob/main/configs/unrealego_r18_heatmap.yaml) /  [Pose](https://github.com/ChenhongyiYang/egoposeformer/blob/main/configs/unrealego_r18_pose3d.yaml) | [Link](https://huggingface.co/ChenhongyiYang/egoposeformer/tree/main) |
 
 Note: The numbers are measured using newly trained models, so they are slightly different from the numbers reported in the paper.
 
