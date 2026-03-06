@@ -1,4 +1,4 @@
-## New paper: EgoPoseFormer v2!! 
+## New paper about EgoPoseFormer v2!! 
 
 Please refer to our [EgoPoseFormer v2](https://arxiv.org/abs/2603.04090) paper (accepted to CVPR 2026) for the new version of EgoPoseFormer. The new model has better accuracy and is more suitable for actual on-device deployment!
 
